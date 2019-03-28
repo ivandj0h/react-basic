@@ -1,33 +1,72 @@
 import React, { Component } from 'react';
 import './App.css';
-import Product from './components/Product'
-import Navbar from './components/Navbar';
+import Login from './components/Login';
+import Register from './components/Register';
+import Contact from './components/Contact'
 
 class App extends Component {
 
-  state = {
-    produks: [
-      {id: '1', namaProduk: 'Laptop Asus', hargaProduk: '5.000.000', stokProduk: '10'},
-      {id: '2', namaProduk: 'Macbook Pro', hargaProduk: '35.000.000', stokProduk: '5'},
-      {id: '3', namaProduk: 'Laptop Lenovo', hargaProduk: '4.000.000', stokProduk: '15'}
-    ]
+  onMenuClicked (idx) {
+    this.child[idx].setAction();
+    this.setState({active:idx});
   }
 
-  gantiHarga = (id) => {
-    this.setState= ({
-      namaProduk: '11'
-    })
-    console.log(this.state.produks[0].stokProduk)
+  changeAction (actionOptions) {
+    this.setState({
+      action: actionOptions
+    });
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      active:0,
+      items: [
+        { text: "Login"},
+        { text: "Registration"},
+        { text: "Contact"}
+      ],
+      action: {
+        cancel: {
+          text: "Cancel"
+        },
+        submit: {
+          text: "Submit"
+        }
+      }
+    }
+    this.child = [];
+    this.changeAction  = this.changeAction.bind(this);
+    this.onMenuClicked = this.onMenuClicked.bind(this);
   }
 
   render() {
     return (
       <div className="App">
-        <Navbar />
-        <Product produks={this.state.produks} gantiHarga={this.gantiHarga}/>
+        <div>
+        <h2>Didin Application</h2>        
+        {
+          this.state.items.map((item, idx) => (
+            <button onClick={(e) => {
+              this.onMenuClicked(idx);
+              e.preventDefault();
+            }}>{item.text}</button>
+          ))
+        }    
+        
+        <section>
+            <Login show={this.state.active==0}  changeHandler={ this.changeAction } ref={instance => this.child[0] = instance} />
+            <Registration show={this.state.active==1} changeHandler={ this.changeAction } ref={instance => this.child[1] = instance} />  
+            <Contact show={this.state.active==2}  changeHandler={ this.changeAction } ref={instance => this.child[2] = instance} />            
+        </section>
+        <div>
+          <button>{this.state.action.cancel.text}</button>
+          <button>{this.state.action.submit.text}</button>
+        </div>
+      </div>
       </div>
     );
   }
-}
+} 
 
 export default App;
