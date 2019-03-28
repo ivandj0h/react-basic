@@ -3,6 +3,7 @@ import './App.css';
 import Login from './components/Login';
 import Register from './components/Register';
 import Contact from './components/Contact'
+import Navbar from './components/Navbar';
 
 class App extends Component {
 
@@ -23,7 +24,7 @@ class App extends Component {
       active:0,
       items: [
         { text: "Login"},
-        { text: "Registration"},
+        { text: "Register"},
         { text: "Contact"}
       ],
       action: {
@@ -42,6 +43,9 @@ class App extends Component {
 
   render() {
     return (
+
+    <div>
+      <Navbar />
       <div className="App">
         <div>
         <h2>Didin Application</h2>        
@@ -55,9 +59,9 @@ class App extends Component {
         }    
         
         <section>
-            <Login show={this.state.active==0}  changeHandler={ this.changeAction } ref={instance => this.child[0] = instance} />
-            <Registration show={this.state.active==1} changeHandler={ this.changeAction } ref={instance => this.child[1] = instance} />  
-            <Contact show={this.state.active==2}  changeHandler={ this.changeAction } ref={instance => this.child[2] = instance} />            
+            <Login show={this.state.active===0}  changeHandler={ this.changeAction } ref={instance => this.child[0] = instance} />
+            <Register show={this.state.active===1} changeHandler={ this.changeAction } ref={instance => this.child[1] = instance} />  
+            <Contact show={this.state.active===2}  changeHandler={ this.changeAction } ref={instance => this.child[2] = instance} />            
         </section>
         <div>
           <button>{this.state.action.cancel.text}</button>
@@ -65,6 +69,7 @@ class App extends Component {
         </div>
       </div>
       </div>
+      </div>  
     );
   }
 } 
