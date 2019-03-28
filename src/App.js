@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Product from './components/Product'
+import Navbar from './components/Navbar';
 
 class App extends Component {
+
+  state = {
+    produks: [
+      {id: '1', namaProduk: 'Laptop Asus', hargaProduk: '5.000.000', stokProduk: '10'},
+      {id: '2', namaProduk: 'Macbook Pro', hargaProduk: '35.000.000', stokProduk: '5'},
+      {id: '3', namaProduk: 'Laptop Lenovo', hargaProduk: '4.000.000', stokProduk: '15'}
+    ]
+  }
+
+  gantiHarga = (id) => {
+    this.setState= ({
+      namaProduk: '11'
+    })
+    console.log(this.state.produks[0].stokProduk)
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Navbar />
+        <Product produks={this.state.produks} gantiHarga={this.gantiHarga}/>
       </div>
     );
   }
