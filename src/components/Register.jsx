@@ -17,18 +17,18 @@ class Register extends Component {
 
 	render() {
 		return (
-			<form className={this.props.show?'show':'hide'}>
-				<h1>Registration</h1>
-				<div>
-					<input type="text" placeholder="Enter username ..." />
-				</div>
-				<div>
-					<input type="text" placeholder="Enter email address ..." />
-				</div>
-				<div>
-					<input type="password" placeholder="Enter password ..." />
-				</div>
-			</form>
+                <form className={this.props.show?'show':'hide'}>
+                    <h1>Registration</h1>
+                    <div className="form-group">
+                        <input type="text" className="form-control" placeholder="Enter username ..." />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" className="form-control" placeholder="Enter email address ..." />
+                    </div>
+                    <div className="form-group">
+                        <input type="password" className="form-control" placeholder="Enter password ..." />
+                    </div>
+                </form>
 		);
 	}
 

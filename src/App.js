@@ -48,10 +48,10 @@ class App extends Component {
       <Navbar />
       <div className="App">
         <div>
-        <h2>Didin Application</h2>        
+          <br />
         {
           this.state.items.map((item, idx) => (
-            <button onClick={(e) => {
+            <button type="button"  className="btn btn-secondary" onClick={(e) => {
               this.onMenuClicked(idx);
               e.preventDefault();
             }}>{item.text}</button>
@@ -64,8 +64,8 @@ class App extends Component {
             <Contact show={this.state.active===2}  changeHandler={ this.changeAction } ref={instance => this.child[2] = instance} />            
         </section>
         <div>
-          <button>{this.state.action.cancel.text}</button>
-          <button>{this.state.action.submit.text}</button>
+          <button className="btn btn-primary mr-sm-2">{this.state.action.cancel.text}</button> 
+          <button className="btn btn-danger">{this.state.action.submit.text}</button>
         </div>
       </div>
       </div>
