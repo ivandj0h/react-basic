@@ -1,4 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+if you like it, feel free to clone and please develop it.
 
 ## Installation
 
